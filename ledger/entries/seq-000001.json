@@ -1,0 +1,80 @@
+{
+  "changes": {
+    "allow_shorts": {
+      "from": false,
+      "to": true
+    },
+    "base_rate_source": {
+      "from": null,
+      "to": "FMP federalFunds (effective fed funds, monthly), pulled and cached"
+    },
+    "cash_spread_bps": {
+      "from": null,
+      "to": -25
+    },
+    "margin_spread_bps": {
+      "from": null,
+      "to": 75
+    },
+    "max_gross_exposure_pct": {
+      "from": 100.0,
+      "to": 200
+    },
+    "rates_floating": {
+      "from": null,
+      "to": true
+    },
+    "short_borrow_cost_annual_pct": {
+      "from": 0.5,
+      "to": 0.4
+    },
+    "strategy": {
+      "from": null,
+      "to": "Long/short equity"
+    }
+  },
+  "config_after": {
+    "allow_shorts": true,
+    "base_currency": "USD",
+    "base_rate_source": "FMP federalFunds (effective fed funds, monthly), pulled and cached",
+    "benchmark": "SPY",
+    "breach_policy": "Instruction is REFUSED at log time, not silently clipped. A breach must be an explicit config change in the chain.",
+    "capacity_guard": {
+      "adv_lookback_days": 20,
+      "flag_if_days_to_liquidate_over": 3.0,
+      "flag_if_position_pct_of_adv_over": 25.0,
+      "participation_rate_pct": 20
+    },
+    "cash_spread_bps": -25,
+    "cash_yield": "none (cash earns 0%)",
+    "cash_yield_annual_pct": 0.0,
+    "commission_per_share": 0.0,
+    "fill_convention": "next_session_open",
+    "fund_name": "Fund1",
+    "inception_date": null,
+    "instruction_cutoff_ct": "16:00",
+    "margin_rate_annual_pct": 6.5,
+    "margin_spread_bps": 75,
+    "max_gross_exposure_pct": 200,
+    "max_single_position_pct": 15.0,
+    "min_adv_usd": 25000000,
+    "min_market_cap_usd": 2000000000,
+    "price_source": "FMP (financialmodelingprep.com) split/dividend-adjusted daily bars",
+    "rates_floating": true,
+    "return_method": "daily time-weighted return, geometrically linked",
+    "short_borrow_cost_annual_pct": 0.4,
+    "short_borrow_hard_to_borrow_pct": 3.0,
+    "slippage_bps": 5,
+    "starting_capital": 100000000.0,
+    "strategy": "Long/short equity",
+    "universe_constraint": "No micro caps. Hard floor: $2bn market cap AND $25mm 20-day median dollar ADV at instruction date."
+  },
+  "hash": "af4d4e7b0e043cf464ff9e2dd1daa8e1157be900b2f985a81e6c1a6858ff4bea",
+  "kind": "CONFIG",
+  "note": "CWS 2026-09-17: run it like a HF. L/S, 200 gross, reasonable prime and borrow rates.",
+  "prev_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "seq": 1,
+  "ts_ct": "2026-09-17 12:18:09 CDT",
+  "ts_utc": "2026-09-17T17:18:09Z",
+  "verbatim": "config allow_shorts=true max_gross_exposure_pct=200 rates_floating=true base_rate_source=\"FMP federalFunds (effective fed funds, monthly), pulled and cached\" margin_spread_bps=75 cash_spread_bps=-25 short_borrow_cost_annual_pct=0.40 short_borrow_hard_to_borrow_pct=3.00 strategy=\"Long/short equity\""
+}

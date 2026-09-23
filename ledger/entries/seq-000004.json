@@ -1,0 +1,83 @@
+{
+  "changes": {
+    "borrow_source": {
+      "from": null,
+      "to": "Schwab marketdata quotes reference: isShortable, isHardToBorrow, htbRate (read as rebate; cost = Fed funds - htbRate), floor = short_borrow_cost_annual_pct; 360-day accrual"
+    },
+    "cash_yield": {
+      "from": "none (cash earns 0%)",
+      "to": "Fed funds (prior month, FMP) minus cash_spread_bps on positive cash, including short-sale proceeds"
+    },
+    "dividend_policy": {
+      "from": null,
+      "to": "Booked on ex-date as receivable (long receives, short pays), cash on pay date"
+    },
+    "fill_convention": {
+      "from": "next_session_open",
+      "to": "at_log_quote"
+    },
+    "fund_name": {
+      "from": "Fund1",
+      "to": "Magnus Fund I"
+    },
+    "instruction_cutoff_ct": {
+      "from": "16:00",
+      "to": "Logged 08:30-15:00 CT on a session with a quote under 5 minutes old: fills at that quote plus slippage. Before 08:30: that day's open. Otherwise: next session's open."
+    },
+    "instruction_grammar": {
+      "from": null,
+      "to": "BUY/SELL act on longs, SHORT/COVER on shorts; % = target position size of NAV at prior close; never crosses zero"
+    },
+    "price_source": {
+      "from": "FMP (financialmodelingprep.com) split/dividend-adjusted daily bars",
+      "to": "FMP non-split-adjusted daily bars (prices as traded); splits and dividends booked as dated events"
+    }
+  },
+  "config_after": {
+    "allow_shorts": true,
+    "base_currency": "USD",
+    "base_rate_source": "FMP federalFunds (effective fed funds, monthly), pulled and cached",
+    "benchmark": "SPY",
+    "borrow_source": "Schwab marketdata quotes reference: isShortable, isHardToBorrow, htbRate (read as rebate; cost = Fed funds - htbRate), floor = short_borrow_cost_annual_pct; 360-day accrual",
+    "breach_policy": "Instruction is REFUSED at log time, not silently clipped. A breach must be an explicit config change in the chain.",
+    "capacity_guard": {
+      "adv_lookback_days": 20,
+      "flag_if_days_to_liquidate_over": 3.0,
+      "flag_if_position_pct_of_adv_over": 25.0,
+      "participation_rate_pct": 20
+    },
+    "cash_spread_bps": -25,
+    "cash_yield": "Fed funds (prior month, FMP) minus cash_spread_bps on positive cash, including short-sale proceeds",
+    "cash_yield_annual_pct": 0.0,
+    "commission_per_share": 0.0,
+    "dividend_policy": "Booked on ex-date as receivable (long receives, short pays), cash on pay date",
+    "fill_convention": "at_log_quote",
+    "fund_name": "Magnus Fund I",
+    "inception_date": null,
+    "instruction_cutoff_ct": "Logged 08:30-15:00 CT on a session with a quote under 5 minutes old: fills at that quote plus slippage. Before 08:30: that day's open. Otherwise: next session's open.",
+    "instruction_grammar": "BUY/SELL act on longs, SHORT/COVER on shorts; % = target position size of NAV at prior close; never crosses zero",
+    "margin_rate_annual_pct": 6.5,
+    "margin_spread_bps": 75,
+    "max_gross_exposure_pct": 250,
+    "max_single_position_pct": 15.0,
+    "min_adv_usd": 25000000,
+    "min_market_cap_usd": 2000000000,
+    "price_source": "FMP non-split-adjusted daily bars (prices as traded); splits and dividends booked as dated events",
+    "rates_floating": true,
+    "return_method": "daily time-weighted return, geometrically linked",
+    "short_borrow_cost_annual_pct": 0.4,
+    "short_borrow_hard_to_borrow_pct": 3.0,
+    "slippage_bps": 5,
+    "starting_capital": 100000000.0,
+    "strategy": "Long/short equity",
+    "universe_constraint": "No micro caps. Hard floor: $2bn market cap AND $25mm 20-day median dollar ADV at instruction date."
+  },
+  "hash": "f544fe3e79083a6a02bab6e745ca0b414e4114858c6aa683784d957e39fc6245",
+  "kind": "CONFIG",
+  "note": "CWS 2026-09-23: intraday fills required; engine rebuilt to charge dividends, per-name Schwab borrow, and to publish inputs",
+  "prev_hash": "1483fefd65910bc27c7c0631e512eda9c1d71ef21873bdb2378614cf51d8b0b7",
+  "seq": 4,
+  "ts_ct": "2026-09-23 12:34:50 CDT",
+  "ts_utc": "2026-09-23T17:34:50Z",
+  "verbatim": "config fund_name fill_convention price_source cash_yield instruction_cutoff_ct borrow_source dividend_policy instruction_grammar"
+}
