@@ -1,4 +1,4 @@
-# Magnus Fund I, public record
+# Magnus Financials I, public record
 
 A model long/short financials book. $100,000,000 notional. **No real capital is invested.**
 This repository exists so anyone can check that the record was not edited after the fact.
